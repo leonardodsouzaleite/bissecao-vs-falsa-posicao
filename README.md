@@ -165,9 +165,3 @@ A animação evidencia:
 # 📚 Finalidade acadêmica
 
 Projeto desenvolvido para fins didáticos e acadêmicos na disciplina de **Cálculo Numérico**.
-
----
-
-# 👨‍💻 Autor
-
-Desenvolvido por **Leonardo D. Souza Leite**
