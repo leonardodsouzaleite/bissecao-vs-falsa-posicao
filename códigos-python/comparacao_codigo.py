@@ -3,7 +3,6 @@ import numpy as np
 def f(x):
     return x * np.log(x) - 1
 
-# --- Implementação do Slide: Bisseção ---
 def bissecao_slide(f, a, b, tol=0.02):
     while abs(b - a) > tol:
         c = (a + b) / 2
