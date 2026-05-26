@@ -27,7 +27,7 @@ Este projeto foi criado para demonstrar visualmente o funcionamento de dois mét
 A função analisada é:
 
 ```math
-f(x) = x\ln(x) - 1
+f(x) = x \cdot ln(x) - 1
 ```
 
 com critério de parada:
