@@ -13,17 +13,22 @@ def f(x):
     return x * math.log(x) - 1
 
 def bissecao(f, a, b, tol):
+    iteracoes = 0
     while abs(b - a) > tol:
+        iteracoes += 1
         c = (a + b) / 2
         if f(a) * f(c) < 0:
             b = c
         else:
             a = c
-    return (a + b) / 2
+    raiz = (a + b) / 2
+    return raiz, iteracoes
 
 def regula_falsi(f, a, b, tol):
     prev_c = 0
+    iteracoes = 0
     while True:
+        iteracoes += 1
         c = (a * f(b) - b * f(a)) / (f(b) - f(a))
         if abs(c - prev_c) < tol:
             break
@@ -32,7 +37,7 @@ def regula_falsi(f, a, b, tol):
             b = c
         else:
             a = c
-    return c
+    return c, iteracoes
 
 
 print("==========================================================================================================")
@@ -49,28 +54,36 @@ controle = int(input("Qual questão você quer executar (0, 1, 2 ou 3)? "))
 
 if controle == 0:
     print("\n")
-    print("Método da Bisseção:\n    f(x) = x * log(x) - 1 | f(x) = 0 <=> x = ", bissecao(f, 1, 3, 0.02))
+    raiz_bis, it_bis = bissecao(f, 1, 3, 0.02)
+    print(f"Método da Bisseção:\n    f(x) = x * log(x) - 1 | f(x) = 0 <=> x = {raiz_bis} ({it_bis} iterações)")
     print("\n")
-    print("Método da Falsa Posição:\n    f(x) = x * log(x) - 1 | f(x) = 0 <=> x = ", regula_falsi(f, 1, 3, 0.02))
+    raiz_rf, it_rf = regula_falsi(f, 1, 3, 0.02)
+    print(f"Método da Falsa Posição:\n    f(x) = x * log(x) - 1 | f(x) = 0 <=> x = {raiz_rf} ({it_rf} iterações)")
     print("\n")
 
-if controle == 1:
+elif controle == 1:
     print("\n")
-    print("Método da Bisseção:\n    f(i) = P*(i(1+i)^n)/((1+i)^n - 1) - A = 0 <=> i = ", bissecao(f1, 0.05, 0.15, 0.0001))
+    raiz_bis, it_bis = bissecao(f1, 0.05, 0.15, 0.0001)
+    print(f"Método da Bisseção:\n    f(i) = P*(i(1+i)^n)/((1+i)^n - 1) - A = 0 <=> i = {raiz_bis} ({it_bis} iterações)")
     print("\n")
-    print("Método da Falsa Posição:\n    f(i) = P*(i(1+i)^n)/((1+i)^n - 1) - A = 0 <=> i = ", regula_falsi(f1, 0.05, 0.15, 0.0001))
+    raiz_rf, it_rf = regula_falsi(f1, 0.05, 0.15, 0.0001)
+    print(f"Método da Falsa Posição:\n    f(i) = P*(i(1+i)^n)/((1+i)^n - 1) - A = 0 <=> i = {raiz_rf} ({it_rf} iterações)")
     print("\n")
 
 elif controle == 2:
     print("\n")
-    print("Método da Bisseção:\n    f(x) = 10 - 20*(e^(-0.2x) - e^(-0.75x)) - 5 = 0 <=> x = ", bissecao(f2, 0.1, 2.0, 0.001))
+    raiz_bis, it_bis = bissecao(f2, 0.1, 2.0, 0.001)
+    print(f"Método da Bisseção:\n    f(x) = 10 - 20*(e^(-0.2x) - e^(-0.75x)) - 5 = 0 <=> x = {raiz_bis} ({it_bis} iterações)")
     print("\n")
-    print("Método da Falsa Posição:\n    f(x) = 10 - 20*(e^(-0.2x) - e^(-0.75x)) - 5 = 0 <=> x = ", regula_falsi(f2, 0.1, 2.0, 0.001))
+    raiz_rf, it_rf = regula_falsi(f2, 0.1, 2.0, 0.001)
+    print(f"Método da Falsa Posição:\n    f(x) = 10 - 20*(e^(-0.2x) - e^(-0.75x)) - 5 = 0 <=> x = {raiz_rf} ({it_rf} iterações)")
     print("\n")
 
 elif controle == 3:
     print("\n")
-    print("Método da Bisseção:\n    f(t) = 2200*ln(160000 / (160000 - 2680*t)) - 9.8*t - 1000 = 0 <=> t = ", bissecao(f3, 20, 30, 0.01))
+    raiz_bis, it_bis = bissecao(f3, 20, 30, 0.01)
+    print(f"Método da Bisseção:\n    f(t) = 2200*ln(160000 / (160000 - 2680*t)) - 9.8*t - 1000 = 0 <=> t = {raiz_bis} ({it_bis} iterações)")
     print("\n")
-    print("Método da Falsa Posição:\n    f(t) = 2200*ln(160000 / (160000 - 2680*t)) - 9.8*t - 1000 = 0 <=> t = ", regula_falsi(f3, 20, 30, 0.01))
+    raiz_rf, it_rf = regula_falsi(f3, 20, 30, 0.01)
+    print(f"Método da Falsa Posição:\n    f(t) = 2200*ln(160000 / (160000 - 2680*t)) - 9.8*t - 1000 = 0 <=> t = {raiz_rf} ({it_rf} iterações)")
     print("\n")
